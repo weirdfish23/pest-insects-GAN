@@ -22,6 +22,10 @@ Descativar el virtual env
 
 `deactivate`
 
+## Descargar dataset base
+
+`python3 dowload_base_data.py`
+
 ---
 
 By Joel Cabrera Rios
