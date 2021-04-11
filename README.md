@@ -1,5 +1,7 @@
 # pest-insects-GAN
 
+## Environment Setup
+
 Crear el virtual env "env"
 
 `python3 -m venv env`
@@ -15,6 +17,10 @@ Revisar el virtual env
 Instalar las librerias y dependencias
 
 `pip install -r requirements.txt`
+
+Descativar el virtual env
+
+`deactivate`
 
 ---
 
