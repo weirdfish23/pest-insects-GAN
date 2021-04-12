@@ -10,13 +10,13 @@ Activar el virutal env
 
 `source env/bin/activate`
 
-Revisar el virtual env
-
-`which python`
-
 Instalar las librerias y dependencias
 
 `pip install -r requirements.txt`
+
+Revisar el virtual env
+
+`which python`
 
 Descativar el virtual env
 
@@ -25,6 +25,10 @@ Descativar el virtual env
 ## Descargar dataset base
 
 `python3 dowload_base_data.py`
+
+## Aumentar data con técnicas tradicionales
+
+`python3 traditional_data_augmentation.py`
 
 ---
 
