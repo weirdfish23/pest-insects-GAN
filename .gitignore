@@ -1,5 +1,6 @@
 data/
 .DS_Store
+.jovianrc
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

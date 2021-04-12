@@ -3,5 +3,14 @@
         "url" : "https://drive.google.com/uc?id=1WZq21C4O6c4KwjSFFTxHzMGzM9zYtPhW",
         "src_filename": "dataset_v0.zip",
         "dest_dir": "data"
+    },
+    "n_data_augmentation":{
+        "liriomyza huidobrensis": 23,
+        "brevicoryne brassicae": 23,
+        "prodiplosis longifila": 23,
+        "trips tabaci": 23,
+        "Bemisia tabaci": 0,
+        "Macrolophus pygmaeus": 0,
+        "Nesidiocoris tenuis": 1
     }
 }
