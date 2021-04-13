@@ -14,6 +14,14 @@ def show_img(img):
     plt.imshow(np.transpose(npimg, (1, 2, 0)))
     plt.show()
 
+def show_tensor_images(image_tensor, num_images=25, size=(1, 28, 28), nrow=5, show=True):
+    image_tensor = (image_tensor + 1) / 2 
+    image_unflat = image_tensor.detach().cpu()
+    image_grid = torchvision.utils.make_grid(image_unflat[:num_images], nrow=nrow)
+    plt.imshow(image_grid.permute(1, 2, 0).squeeze())
+    if show:
+        plt.show()
+
 def augment_img(img, lbl, n=24, gray_scale=False):
     base_t = transforms.Compose([transforms.ToPILImage(),transforms.ToTensor()])
     img_mean = torch.mean(img.float(), dim=(1, 2))

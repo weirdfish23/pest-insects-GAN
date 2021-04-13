@@ -5,6 +5,7 @@ from skimage import io, transform
 import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import Dataset, DataLoader
+from sklearn.preprocessing import LabelBinarizer
 
 class ToTensor(object):
     """Covert ndarrays in sample to Tensors."""
@@ -29,7 +30,7 @@ class InsectsDataset(Dataset):
                   'Nesidiocoris tenuis'] 
     """
     
-    def __init__(self, csv_file, root_dir, transform=None, class_name='all'):
+    def __init__(self, csv_file, root_dir, transform=None, class_name='all', return_one_hot=False):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -38,6 +39,10 @@ class InsectsDataset(Dataset):
         """
         
         self.df_data = pd.read_csv(csv_file)
+        # Create one-hot label encoding
+        self.label_binarizer = LabelBinarizer().fit(self.df_data['especie'])
+        self.return_one_hot = return_one_hot
+
         self.class_name = list(self.df_data['especie'].unique())
         # If class_name != 'all', filter for only one class
         if class_name != 'all':
@@ -66,6 +71,12 @@ class InsectsDataset(Dataset):
         
         if self.transform:
             sample = self.transform(sample)
+
+        if self.return_one_hot:
+            if type(class_name) == str:
+                sample['one_hot'] = self.label_binarizer.transform([class_name])
+            else:
+                sample['one_hot'] = self.label_binarizer.transform(class_name.to_list())
         
         return sample
 

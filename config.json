@@ -12,5 +12,15 @@
         "Bemisia tabaci": 0,
         "Macrolophus pygmaeus": 0,
         "Nesidiocoris tenuis": 1
+    },
+    "conditional_GAN":{
+        "img_shape": [3, 64, 64],
+        "n_classes": 7,
+        "n_epochs" : 200,
+        "z_dim" : 64,
+        "display_step" : 500,
+        "batch_size" : 128,
+        "lr" : 0.0002,
+        "device" : "cpu"
     }
 }
