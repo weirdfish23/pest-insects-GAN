@@ -19,6 +19,22 @@ class ToTensor(object):
         return {'image': torch.from_numpy(image),
                'class_name': class_name}
 
+class ToTensorNorm(object):
+    """Covert ndarrays in sample to Tensors."""
+    
+    def __call__(self, sample):
+        image, class_name = sample['image'], sample['class_name']
+
+        transform = transforms.Compose([transforms.ToPILImage(),
+                                    transforms.ToTensor(),
+                                    transforms.Normalize((0.5,), (0.5,))])
+
+        # numpy image: [H x W x C]
+        # torch image: [C x H x W]
+        image = image.transpose((2, 0, 1))
+        return {'image': transform(torch.from_numpy(image)),
+               'class_name': class_name}
+
 class InsectsDataset(Dataset):
     """Insects Dataset.
        Especies =['liriomyza huidobrensis',
