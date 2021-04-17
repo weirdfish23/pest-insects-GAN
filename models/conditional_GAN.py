@@ -8,11 +8,9 @@ class Generator(nn.Module):
         self.input_dim = input_dim
 
         self.gen = nn.Sequential(                                                               # (71, 1, 1)
-            self.make_gen_block(input_dim, hidden_dim * 8, kernel_size=3, stride=2),            # (64*8, 3, 3)
-            self.make_gen_block(hidden_dim * 8, hidden_dim * 4, kernel_size=3, stride=2),       # (64*4, 7, 7)
-            self.make_gen_block(hidden_dim * 4, hidden_dim * 2, kernel_size=3, stride=2),       # (64*2, 15, 15)
-            self.make_gen_block(hidden_dim * 2, hidden_dim, kernel_size=4, stride=2),           # (64, 32, 32)
-            self.make_gen_block(hidden_dim, im_chan, kernel_size=2, stride=2, final_layer=True),# (3, 64, 64)
+            self.make_gen_block(input_dim, hidden_dim * 2, kernel_size=5, stride=2),            # (64*2, 5, 5)
+            self.make_gen_block(hidden_dim * 2, hidden_dim, kernel_size=5, stride=4),           # (64, 21, 21)
+            self.make_gen_block(hidden_dim, im_chan, kernel_size=4, stride=3, final_layer=True),# (3, 64, 64)
         )
 
     def make_gen_block(self, input_channels, output_channels, kernel_size=3, stride=2, final_layer=False):

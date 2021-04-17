@@ -21,7 +21,7 @@ def show_tensor_images(image_tensor, num_images=25, size=(1, 28, 28), nrow=5, sh
     if show:
         plt.imshow(image_grid.permute(1, 2, 0).squeeze())
         plt.show()
-    return image_grid.permute(1, 2, 0).squeeze()
+    return image_grid.squeeze()
 
 def augment_img(img, lbl, n=24, gray_scale=False):
     base_t = transforms.Compose([transforms.ToPILImage(),transforms.ToTensor()])

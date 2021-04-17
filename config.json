@@ -18,10 +18,10 @@
         "n_classes": 7,
         "n_epochs" : 500,
         "z_dim" : 64,
-        "display_step" : 500,
+        "display_step" : 100,
         "batch_size" : 128,
         "lr" : 0.0002,
-        "device" : "cpu",
+        "device" : "cuda",
         "model_name" : "conditional_DCGAN",
         "show_graphs" : false
     }

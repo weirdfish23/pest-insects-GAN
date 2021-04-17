@@ -78,6 +78,7 @@ wandb.login()
 wandb.init(project=cfg_model['model_name'], config=cfg_model)
 
 wandb.watch(gen, criterion, log="all", log_freq=cfg_model['display_step'])
+wandb.watch(disc, criterion, log="all", log_freq=cfg_model['display_step'])
 
 # Train
 
@@ -164,6 +165,11 @@ for epoch in range(n_epochs):
         generator_losses += [gen_loss.item()]
         #
 
+        wandb.log({
+            'gen_loss': gen_loss.item(),
+            'disc_loss': disc_loss.item()
+        }, step=cur_step)
+
         if cur_step % display_step == 0 and cur_step > 0:
             gen_mean = sum(generator_losses[-display_step:]) / display_step
             disc_mean = sum(discriminator_losses[-display_step:]) / display_step
@@ -189,8 +195,6 @@ for epoch in range(n_epochs):
                 plt.show()
 
             wandb.log({
-                'gen_loss': gen_mean,
-                'disc_loss': disc_mean,
                 'fake_samples': wandb.Image(show_tensor_images(fake, show=False)),
                 'real_samples': wandb.Image(show_tensor_images(real, show=False)) 
             }, step=cur_step)
