@@ -4,6 +4,7 @@ import pandas as pd
 from skimage import io, transform
 import numpy as np
 import matplotlib.pyplot as plt
+import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader
 from sklearn.preprocessing import LabelBinarizer
 

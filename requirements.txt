@@ -4,3 +4,5 @@ torchvision==0.6.1
 scikit-image==0.18.1
 gdown==3.12.2
 scikit-learn==0.24.1
+wandn==0.10.26
+jupyter==1.0.0
