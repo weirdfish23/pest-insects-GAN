@@ -33,6 +33,7 @@ root_dir = os.path.join(base_path, 'images')
 
 cfg_model = config['conditional_GAN']
 
+load_weights = cfg_model['load_weights']
 weights_dir = cfg_model['weights_dir']
 save_epoch = cfg_model['save_epoch']
 img_shape = tuple(cfg_model['img_shape'])
@@ -73,14 +74,25 @@ criterion = nn.BCEWithLogitsLoss()
 # Initialize weights
 
 def weights_init(m):
-    if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
-        torch.nn.init.normal_(m.weight, 0.0, 0.02)
-    if isinstance(m, nn.BatchNorm2d):
-        torch.nn.init.normal_(m.weight, 0.0, 0.02)
-        torch.nn.init.constant_(m.bias, 0)
+        if isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d):
+            torch.nn.init.normal_(m.weight, 0.0, 0.02)
+        if isinstance(m, nn.BatchNorm2d):
+            torch.nn.init.normal_(m.weight, 0.0, 0.02)
+            torch.nn.init.constant_(m.bias, 0)
 
-gen = gen.apply(weights_init)
-disc = disc.apply(weights_init)
+if load_weights:
+    gen_ws = torch.load(cfg_model['w_to_load']['gen'])
+    disc_ws = torch.load(cfg_model['w_to_load']['gen'])
+    
+    gen.load_state_dict(gen_ws['state_dict'])
+    gen_opt.load_state_dict(gen_ws['optimizer'])
+
+    disc.load_state_dict(disc_ws['state_dict'])
+    disc_opt.load_state_dict(disc_ws['optimizer'])
+
+else:
+    gen = gen.apply(weights_init)
+    disc = disc.apply(weights_init)
 
 # Initialize WandB
 

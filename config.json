@@ -16,7 +16,7 @@
     "conditional_GAN":{
         "img_shape": [3, 64, 64],
         "n_classes": 7,
-        "n_epochs" : 600,
+        "n_epochs" : 300,
         "z_dim" : 64,
         "display_step" : 100,
         "batch_size" : 128,
@@ -25,6 +25,11 @@
         "model_name" : "conditional_DCGAN",
         "show_graphs" : false,
         "weights_dir" : "weights", 
-        "save_epoch" : 50
+        "save_epoch" : 100,
+        "load_weights": true,
+        "w_to_load":{
+            "gen": "weights/conditional_DCGAN_17_04_21__23_47_12/conditional_DCGAN_gen_state_epoch_550",
+            "disc": "weights/conditional_DCGAN_17_04_21__23_47_12/conditional_DCGAN_disc_state_epoch_550"
+        }
     }
 }
