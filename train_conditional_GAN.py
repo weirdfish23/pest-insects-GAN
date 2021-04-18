@@ -30,11 +30,11 @@ config = read_config()
 base_path = os.path.join(config['base_data']['dest_dir'], 'augmented')
 csv_file = os.path.join(base_path, 'data_info.csv')
 root_dir = os.path.join(base_path, 'images')
-weight_dir = config['weights_dir']
-save_epoch = config['save_epoch']
 
 cfg_model = config['conditional_GAN']
 
+weights_dir = cfg_model['weights_dir']
+save_epoch = cfg_model['save_epoch']
 img_shape = tuple(cfg_model['img_shape'])
 n_classes = cfg_model['n_classes']
 n_epochs = cfg_model['n_epochs']
@@ -48,7 +48,7 @@ print("Training config::", cfg_model)
 
 # To save model weights
 
-model_name = config['model_name']
+model_name = cfg_model['model_name']
 weights_path = os.path.join(weights_dir, model_name+str(datetime.now().strftime('_%d_%m_%y__%H_%M_%S')))
 
 if  model_name not in os.listdir(weights_dir):
