@@ -2,13 +2,17 @@
 
 ## Environment Setup
 
+Activar conda\*
+
+`source $HOME/miniconda3/bin/activate`
+
 Crear el virtual env "env"
 
-`python3 -m venv env`
+`conda create -n pests python=3.8.5 anaconda`
 
 Activar el virutal env
 
-`source env/bin/activate`
+`conda activate pests`
 
 Instalar las librerias y dependencias
 
@@ -20,7 +24,7 @@ Revisar el virtual env
 
 Descativar el virtual env
 
-`deactivate`
+`conda deactivate`
 
 ## Descargar dataset base
 

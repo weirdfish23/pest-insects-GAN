@@ -30,6 +30,8 @@ config = read_config()
 base_path = os.path.join(config['base_data']['dest_dir'], 'augmented')
 csv_file = os.path.join(base_path, 'data_info.csv')
 root_dir = os.path.join(base_path, 'images')
+weight_dir = config['weights_dir']
+save_epoch = config['save_epoch']
 
 cfg_model = config['conditional_GAN']
 
@@ -43,6 +45,14 @@ lr = cfg_model['lr']
 device = cfg_model['device']
 
 print("Training config::", cfg_model)
+
+# To save model weights
+
+model_name = config['model_name']
+weights_path = os.path.join(weights_dir, model_nam)
+
+if  model_name not in os.listdir(weights_dir):
+    os.mkdir(weights_path)
 
 # Load Dataset
 
@@ -201,3 +211,21 @@ for epoch in range(n_epochs):
         elif cur_step == 0:
             print("Assertions passed!!")
         cur_step += 1
+
+    # Save weights
+    if epoch % save_epoch == 0:
+        state_gen = {
+            'epoch': epoch,
+            'state_dict': gen.state_dict(),
+            'optimizer': gen_opt.state_dict(),
+        }
+        torch.save(state_gen, os.path.join(weights_path, model_name+'_gen_state_epoch_{}'.format(str(epoch))))
+
+        state_disc = {
+            'epoch': epoch,
+            'state_dict': disc.state_dict(),
+            'optimizer': disc_opt.state_dict(),
+        }
+        torch.save(state_disc, filepath)
+        torch.save(state_disc, os.path.join(weights_path, model_name+'_disc_state_epoch_{}'.format(str(epoch))))
+
