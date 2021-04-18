@@ -213,18 +213,18 @@ for epoch in range(n_epochs):
         cur_step += 1
 
     # Save weights
-    if epoch % save_epoch == 0:
+    if (epoch+1) % save_epoch == 0:
         state_gen = {
             'epoch': epoch,
             'state_dict': gen.state_dict(),
             'optimizer': gen_opt.state_dict(),
         }
-        torch.save(state_gen, os.path.join(weights_path, model_name+'_gen_state_epoch_{}'.format(str(epoch))))
+        torch.save(state_gen, os.path.join(weights_path, model_name+'_gen_state_epoch_{}'.format(str(epoch+1))))
 
         state_disc = {
             'epoch': epoch,
             'state_dict': disc.state_dict(),
             'optimizer': disc_opt.state_dict(),
         }
-        torch.save(state_disc, os.path.join(weights_path, model_name+'_disc_state_epoch_{}'.format(str(epoch))))
+        torch.save(state_disc, os.path.join(weights_path, model_name+'_disc_state_epoch_{}'.format(str(epoch+1))))
 
