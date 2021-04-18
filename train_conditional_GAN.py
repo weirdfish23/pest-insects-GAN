@@ -82,7 +82,7 @@ def weights_init(m):
 
 if load_weights:
     gen_ws = torch.load(cfg_model['w_to_load']['gen'])
-    disc_ws = torch.load(cfg_model['w_to_load']['gen'])
+    disc_ws = torch.load(cfg_model['w_to_load']['disc'])
     
     gen.load_state_dict(gen_ws['state_dict'])
     gen_opt.load_state_dict(gen_ws['optimizer'])
