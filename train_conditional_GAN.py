@@ -49,7 +49,7 @@ print("Training config::", cfg_model)
 # To save model weights
 
 model_name = config['model_name']
-weights_path = os.path.join(weights_dir, model_nam)
+weights_path = os.path.join(weights_dir, model_name+str(datetime.now().strftime('_%d_%m_%y__%H_%M_%S')))
 
 if  model_name not in os.listdir(weights_dir):
     os.mkdir(weights_path)
