@@ -226,6 +226,5 @@ for epoch in range(n_epochs):
             'state_dict': disc.state_dict(),
             'optimizer': disc_opt.state_dict(),
         }
-        torch.save(state_disc, filepath)
         torch.save(state_disc, os.path.join(weights_path, model_name+'_disc_state_epoch_{}'.format(str(epoch))))
 
