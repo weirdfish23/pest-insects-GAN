@@ -17,11 +17,6 @@ from utils.imgs import show_tensor_images
 from utils.read import read_config
 from models.conditional_WGAN import Generator, Critic, get_noise, get_one_hot_labels, combine_vectors, get_input_dimensions, get_gradient, gradient_penalty, get_crit_loss, get_gen_loss
 
-torch.backends.cudnn.deterministic = True
-random.seed(42)
-np.random.seed(42)
-torch.manual_seed(42)
-torch.cuda.manual_seed_all(42)
 
 # Load configuration
 
