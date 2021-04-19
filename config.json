@@ -31,5 +31,24 @@
             "gen": "weights/conditional_DCGAN_17_04_21__23_47_12/conditional_DCGAN_gen_state_epoch_550",
             "disc": "weights/conditional_DCGAN_17_04_21__23_47_12/conditional_DCGAN_disc_state_epoch_550"
         }
+    },
+    "conditional_WGAN":{
+        "img_shape": [3, 64, 64],
+        "n_classes": 7,
+        "n_epochs" : 600,
+        "z_dim" : 64,
+        "display_step" : 100,
+        "batch_size" : 128,
+        "lr" : 0.0002,
+        "device" : "cpu",
+        "model_name" : "conditional_WGAN",
+        "show_graphs" : false,
+        "weights_dir" : "weights", 
+        "save_epoch" : 100,
+        "load_weights": false,
+        "beta_1": 0.5,
+        "beta_2": 0.999,
+        "c_lambda": 10,
+        "crit_repeats": 5
     }
 }
