@@ -31,7 +31,7 @@ base_path = os.path.join(config['base_data']['dest_dir'], 'augmented')
 csv_file = os.path.join(base_path, 'data_info.csv')
 root_dir = os.path.join(base_path, 'images')
 
-cfg_model = config['conditional_GAN']
+cfg_model = config['conditional_WGAN']
 
 load_weights = cfg_model['load_weights']
 weights_dir = cfg_model['weights_dir']
@@ -170,7 +170,7 @@ for epoch in range(n_epochs):
             
             
             epsilon = torch.rand(len(real), 1, 1, 1, device=device, requires_grad=True)
-            gradient = get_gradient(crit, real, fake.detach(), epsilon)
+            gradient = get_gradient(crit, real_image_and_labels, fake_image_and_labels, epsilon)
             gp = gradient_penalty(gradient)
             crit_loss = get_crit_loss(crit_fake_pred, crit_real_pred, gp, c_lambda)
             # Se calcula el error promedio del critic durante el batch
@@ -192,7 +192,7 @@ for epoch in range(n_epochs):
         fake_image_and_labels_2 = combine_vectors(fake_2, image_one_hot_labels)
 
         crit_fake_pred = crit(fake_image_and_labels_2)
-        gen_loss = get_gen_loss(crit_fake_pred, torch.ones_like(crit_fake_pred))
+        gen_loss = get_gen_loss(crit_fake_pred)
         gen_loss.backward()
         gen_opt.step()
 

@@ -40,7 +40,7 @@
         "display_step" : 100,
         "batch_size" : 128,
         "lr" : 0.0002,
-        "device" : "cpu",
+        "device" : "cuda",
         "model_name" : "conditional_WGAN",
         "show_graphs" : false,
         "weights_dir" : "weights", 
