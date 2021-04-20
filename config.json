@@ -35,7 +35,7 @@
     "conditional_WGAN":{
         "img_shape": [3, 64, 64],
         "n_classes": 7,
-        "n_epochs" : 600,
+        "n_epochs" : 400,
         "z_dim" : 64,
         "display_step" : 100,
         "batch_size" : 128,
@@ -45,7 +45,11 @@
         "show_graphs" : false,
         "weights_dir" : "weights", 
         "save_epoch" : 100,
-        "load_weights": false,
+        "load_weights": true,
+        "w_to_load":{
+            "gen": "weights/conditional_WGAN_19_04_21__01_08_04/conditional_WGAN_gen_state_epoch_600",
+            "crit": "weights/conditional_WGAN_19_04_21__01_08_04/conditional_WGAN_crit_state_epoch_600"
+        },
         "beta_1": 0.5,
         "beta_2": 0.999,
         "c_lambda": 10,
