@@ -54,5 +54,20 @@
         "beta_2": 0.999,
         "c_lambda": 10,
         "crit_repeats": 5
+    },
+    "conditional_VAE":{
+        "img_shape": [3, 64, 64],
+        "n_classes": 7,
+        "n_epochs" : 500,
+        "z_dim" : 64,
+        "display_step" : 100,
+        "batch_size" : 128,
+        "lr" : 0.0002,
+        "device" : "cuda",
+        "model_name" : "conditional_VAE",
+        "show_graphs" : false,
+        "weights_dir" : "weights", 
+        "save_epoch" : 100,
+        "load_weights": false
     }
 }
