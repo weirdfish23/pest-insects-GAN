@@ -63,7 +63,7 @@
         "display_step" : 100,
         "batch_size" : 128,
         "lr" : 0.0002,
-        "kld_weight" : 0.005,
+        "kld_weight" : 0.015,
         "device" : "cuda",
         "model_name" : "conditional_VAE",
         "show_graphs" : false,

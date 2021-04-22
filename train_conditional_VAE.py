@@ -138,7 +138,7 @@ for epoch in range(n_epochs):
         
         obj_loss = loss_function(fake, real, mu, log_var, kld_weight)
         loss = obj_loss['loss']
-        recons_loss = obj_loss['loss']
+        recons_loss = obj_loss['Reconstruction_Loss']
         kld_loss = obj_loss['KLD']
         
         loss.backward()
