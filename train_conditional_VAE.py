@@ -125,6 +125,9 @@ for epoch in range(n_epochs):
         image_one_hot_labels = one_hot_labels[:, :, None, None] # agrega dos dimensiones mas (unsqueeze() ?)
         image_one_hot_labels = image_one_hot_labels.repeat(1, 1, img_shape[1], img_shape[2]) # repeat: size per dim
 
+        enc.zero_grad()
+        dec.zero_grad()
+
         ### Encoder
         real_image_and_labels = combine_vectors(real, image_one_hot_labels)
 
