@@ -35,6 +35,7 @@ img_shape = tuple(cfg_model['img_shape'])
 n_classes = cfg_model['n_classes']
 n_epochs = cfg_model['n_epochs']
 z_dim = cfg_model['z_dim']
+kld_weight = cfg_model['kld_weight']
 display_step = cfg_model['display_step']
 batch_size = cfg_model['batch_size']
 lr = cfg_model['lr']
@@ -135,7 +136,7 @@ for epoch in range(n_epochs):
         z_and_labels = combine_vectors(z, one_hot_labels)
         fake = dec(z_and_labels)
         
-        obj_loss = loss_function(fake, real, mu, log_var, kld_weight=cur_batch_size)
+        obj_loss = loss_function(fake, real, mu, log_var, kld_weight)
         loss = obj_loss['loss']
         recons_loss = obj_loss['loss']
         kld_loss = obj_loss['KLD']
