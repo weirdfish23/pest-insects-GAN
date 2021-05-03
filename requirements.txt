@@ -6,3 +6,5 @@ gdown==3.12.2
 scikit-learn==0.24.1
 wandb==0.10.26
 jupyter==1.0.0
+universal-divergence==0.2.0
+
