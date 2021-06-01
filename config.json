@@ -72,7 +72,7 @@
         "load_weights": false
     },
     "detection": {
-        "data_url" : "https://drive.google.com/ud?id=1_L_drL2assyAe95GsnAOtjlpQ7IrL5I1",
+        "data_url" : "https://drive.google.com/uc?id=1_L_drL2assyAe95GsnAOtjlpQ7IrL5I1",
         "dataset_version": "dataset_00"
     }
 }
