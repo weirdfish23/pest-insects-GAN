@@ -73,7 +73,6 @@
     },
     "detection": {
         "data_url" : "https://drive.google.com/uc?id=1XCDcoomFxQEP4h_EsUMqhgTUa3jm4vRt",
-        "dataset_version": "dataset_20",
-        
+        "dataset_version": "dataset_20"
     }
 }
