@@ -1,0 +1,13 @@
+train: ../data/images/train/
+val: ../data/images/val/
+nc: 7
+names:
+  [
+    "Bemisia tabaci",
+    "Macrolophus pygmaeus",
+    "Nesidiocoris tenuis",
+    "brevicoryne brassicae",
+    "liriomyza huidobrensis",
+    "prodiplosis longifila",
+    "trips tabaci",
+  ]
